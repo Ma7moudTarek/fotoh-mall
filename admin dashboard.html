@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <h2>DashBoard Panel</h2>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="admin.html">Products Control</a></li>
+                    <li><a href="OrdersControl.html">Orders Control</a></li>
+                    <li><a href="UsersManagment.html">Users Managment</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="dashboard">
+            <header>
+                <h1>Admin Dashboard</h1>
+            </header>
+            <section id="dashboard" class="overview">
+                <div class="card">Total Sales: <span>$10,000</span></div>
+                <div class="card">Total Users: <span>500</span></div>
+                <div class="card">Total Orders: <span>120</span></div>
+            </section>
+           
+           
+            <section id="products" class="manage-products">
+                <h2>Manage Products</h2>
+                <button onclick="openAdminPanel()">Add Product</button>
+                <div id="productList" class="product-container"></div>
+            </section>
+
+
+            <section id="orders" class="manage-orders">
+                <h2>Manage Orders</h2>
+                <div id="orderList" class="order-container"></div>
+            </section>
+            <section id="users" class="manage-users">
+                <h2>Manage Users</h2>
+                <div id="userList" class="user-container"></div>
+            </section>
+        </main>
+    </div>
+    
+    <script>
+        function openAdminPanel() {
+            document.getElementById("adminPopup").style.display = "flex";
+        }
+        function closeAdminPanel() {
+            document.getElementById("adminPopup").style.display = "none";
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+        }
+        .admin-container {
+            display: flex;
+            width: 100%;
+            text-align: center;
+        }
+        .sidebar {
+            width: 200px;
+            background: linear-gradient( to top,#0d3648, #2e789d ) ; 
+            color: white;
+            padding: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .dashboard {
+            flex: 1;
+            padding: 20px;
+            background: #f4f4f9;
+        }
+        .overview {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .manage-products, .manage-orders, .manage-users {
+            margin-top: 20px;
+        }
+    </style>
+</body>
+</html>

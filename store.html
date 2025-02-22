@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Store - Home Appliances</h2>
+    
+    <div id="categoryButtons">
+        <button onclick="renderStoreProducts('all')">All</button>
+        <button onclick="renderStoreProducts('mattresses')">Mattresses</button>
+        <button onclick="renderStoreProducts('appliances')">Appliances</button>
+        <button onclick="renderStoreProducts('electrics')">Electrics</button>
+    </div>
+    
+    <div id="storeProducts" class="product-container"></div>
+    
+    <script>
+     document.addEventListener("DOMContentLoaded", () => {
+    const storeProducts = document.getElementById("storeProducts");
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+
+    // 📌 عرض المنتجات على الصفحة
+    function renderStoreProducts(filter = "all") {
+        storeProducts.innerHTML = "";
+        const filteredProducts = filter === "all" ? products : products.filter(p => p.category === filter);
+
+        if (filteredProducts.length === 0) {
+            storeProducts.innerHTML = "<p>🚫 لا توجد منتجات متاحة.</p>";
+            return;
+        }
+
+        let row = document.createElement("div");
+        row.classList.add("product-row");
+
+        filteredProducts.forEach((product) => {
+            const productCard = document.createElement("div");
+            productCard.classList.add("product-card");
+            productCard.innerHTML = `
+                <img src="${product.image || 'placeholder.png'}" alt="${product.name}" class="product-image">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <p class="price">💰 السعر: ${product.price} جنيه</p>
+                <p>🛒 الفئة: ${product.category}</p>
+            `;
+            row.appendChild(productCard);
+
+            if (row.children.length === 4) {
+                storeProducts.appendChild(row);
+                row = document.createElement("div");
+                row.classList.add("product-row");
+            }
+        });
+
+        if (row.children.length > 0) {
+            storeProducts.appendChild(row);
+        }
+    }
+
+    // 📌 تحميل المنتجات عند فتح الصفحة
+    renderStoreProducts();
+});
+
+    </script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+        .product-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        .product-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background: #fff;
+            text-align: center;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .price {
+            color: red;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #categoryButtons {
+            margin-bottom: 20px;
+        }
+        #categoryButtons button {
+            margin: 0 5px;
+        }
+    </style>
+</body>
+</html>
