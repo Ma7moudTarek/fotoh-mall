@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Preview</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="product-container">
+        <div class="product-gallery">
+            <!-- Gallery images will be dynamically added -->
+        </div>
+        <img src="" alt="Main Product Image" class="main-image" id="mainImage">
+        <div class="product-details">
+            <h2 class="product-title">Product Title</h2>
+            <p class="product-description">Product Description</p>
+            <p class="product-price">Product Price</p>
+        </div>
+        <div class="product-buttons">
+            <button class="cart-btn">Add to Cart</button>
+            <button class="buy-btn" onclick="addToCart()">Buy Now</button>
+            <button class="share-btn">Share</button>
+        </div>
+    </div>
+
+    <div class="reviews">
+        <h2>Customer Reviews</h2>
+        <div class="review-list">
+            <!-- Reviews will be dynamically added here -->
+        </div>
+        <form id="reviewForm">
+            <textarea placeholder="Write your review..." required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+
+    <div class="related-products">
+        <h2>Related Products</h2>
+        <div class="related-products-list">
+            <!-- Related products will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            if (productId) {
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+                const product = products.find(p => p._id === productId);
+
+                if (product) {
+                    document.querySelector('.product-title').textContent = product.name;
+                    document.querySelector('.product-description').textContent = product.description;
+                    document.querySelector('.product-price').textContent = `$${product.price}`;
+                    document.getElementById('mainImage').src = product.images[0] || 'images/product1.png';
+
+                    const gallery = document.querySelector('.product-gallery');
+                    gallery.innerHTML = ''; // Clear existing images
+                    product.images.forEach((image, index) => {
+                        const img = document.createElement('img');
+                        img.src = image;
+                        img.alt = `Product Image ${index + 1}`;
+                        img.onclick = () => changeImage(image);
+                        gallery.appendChild(img);
+                    });
+                } else {
+                    document.body.innerHTML = "<p>Product not found.</p>";
+                }
+            } else {
+                document.body.innerHTML = "<p>No product ID provided.</p>";
+            }
+        });
+
+        function changeImage(imageSrc) {
+            document.getElementById('mainImage').src = imageSrc;
+        }
+
+        function addToCart() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const product = products.find(p => p._id === productId);
+
+            if (product) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push(product);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert("Product added to cart!");
+            }
+        }
+
+        document.getElementById("reviewForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const reviewText = document.querySelector("#reviewForm textarea").value;
+            // Save review to localStorage or send to server
+            alert("Review submitted!");
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .product-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 90%;
+        }
+        .product-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .product-gallery img {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .main-image {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .main-image:hover {
+            transform: scale(1.05);
+        }
+        .product-details {
+            text-align: left;
+            padding: 20px;
+            max-width: 400px;
+        }
+        .product-title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .product-description {
+            color: #444;
+            margin: 15px 0;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .product-price {
+            font-size: 26px;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .product-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        .cart-btn, .buy-btn {
+            padding: 14px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        .cart-btn {
+            background: #3498db;
+            color: white;
+        }
+        .buy-btn {
+            background: #e74c3c;
+            color: white;
+        }
+        .cart-btn:hover, .buy-btn:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</body>
+</html>
+
+

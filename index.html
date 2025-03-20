@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>    تسوق اونلاين في مصر الكترونيات موبايلات اجهزة منزلية صحة و جمال الغزاوي  </title>
+</head>
+
+
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="language">
+                <a href="#">English</a>
+                <a href="#">سياسة الإرجاع</a>
+                <a href="#">من نحن</a>
+            </div>
+           
+            <div class="contact-info">
+                <a href="#"><img src="images/whatsapp.png" alt="WhatsApp" class="social-icon" style="width: 15px; height: 15px;"></a>
+                <a href="#"><img src="images/instagram.png" alt="Instagram" class="social-icon" style="width: 15px; height: 15px;"></a>
+                <a href="#"><img src="images/facebook.png" alt="Link" class="social-icon" style="width: 15px; height: 15px;"></a>
+                <a href="#"><img src="images/x.png" alt="Twitter" class="social-icon" style="width: 15px; height: 15px;"></a>
+                <a href="contact.html">تحتاج لمساعدة؟ </a>
+            </div>
+        </div>
+    </div>
+    <div class="shopping-bar">
+        <div class="container">
+            <div class="cart">
+                <span>سلة المشتريات</span>
+                <img src="images/Cart.svg" alt="Cart" class="icon" id="openCart" style="cursor: pointer;">
+
+               <!-- cart modal -->
+ <!-- Cart Modal -->
+ <div id="cartModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Shopping Cart</h2>
+        <div class="cart-items"></div>
+        <p>Total: $<span id="totalPrice">0.00</span></p>
+        <div class="payment-methods">
+            <label><input type="radio" name="payment" value="Credit Card"> Credit Card</label>
+            <label><input type="radio" name="payment" value="PayPal"> PayPal</label>
+            <label><input type="radio" name="payment" value="Cash on Delivery"> Cash on Delivery</label>
+        </div>
+        <button id="checkout">Checkout</button>
+    </div>
+</div>
+            
+                
+            </div>
+           <div class="favorites">
+    <span>المفضلة</span>
+    <img src="images/Wishlist.svg" alt="Favorites" class="icon" id="openFavorites" style="cursor: pointer;">
+
+    <div id="favModal" class="modal" style="display: none;"> <!-- Initially hide the modal -->
+        <div class="fav-content">
+            <span class="close">&times;</span>
+            <h2>المفضلة</h2>
+            <div class="cart-items">
+                <!-- favourite items will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="user-section">
+                <a href="login.html">تسجيل الدخول / التسجيل</a>
+                <input type="text" placeholder="قولي بتدور على ايه؟">
+                <button type="submit" style="border-radius: 10px;">بحث</button>
+            </div>
+            <div class="logo">
+                <img src="images/logo2.jpg" alt="Logo" style="border-radius: 10px;">
+            </div>
+        </div>
+    </div>
+                            <!-- navbar-menu -->
+    <div class="navbar-menu">
+                            <!--المطبغ و المنزل-->
+        <div class="dropdown">
+            <a href="store.html">المطبخ والمنزل</a>
+            <div class="dropdown-content">
+                <div class="container">
+                    <div class="image-section">
+                        <img src="images/appliance.jpg" alt="منتجات إلكترونية">
+                    </div>
+                    <div class="categories" >
+                        <div class="category">
+                            <h3>ادوات و معدات المطبخ</h3>
+                            <ul>
+                                <a>الموازين</a>
+                                <a>أواني الطهي</a>
+                                <a>أدوات حفظ و تخزين الطعام</a>
+                                <a>سكاكين و شوك و معالق</a>
+                                <a>أكواب و أدوات الشرب</a>
+                                <a>إكسسوارات المطبخ</a>
+                                <a>أواني مائدة و تقديم</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                                           <!--مفروشات-->
+        <div class="dropdown">
+            <a href="#">مفروشات</a>
+            <div class="dropdown-content">
+                <div class="container">
+                    <div class="image-section">
+                        <img src="images/matress.jpg" alt="منتجات إلكترونية">
+                    </div>
+                    <div class="categories" >
+                        <div class="category">
+                            <h3>فوط</h3>
+                            <ul>
+                                <a>فوط مطبخ</a>
+                                <a>فوط حمام</a>
+                                <a>برنس</a>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <h3>مفارش السرير</h3>
+                            <ul>
+                                <a>أطقم السرير</a>
+                                <a>دفايات</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                                     <!--تليفزيونات و شاشات-->
+        <div class="dropdown">
+            <a href="#">تليفيزيونات و شاشات</a>
+            <div class="dropdown-content">
+                <div class="container">
+                    <div class="image-section">
+                        <img src="images/tvs.jpg" alt="منتجات إلكترونية">
+                    </div>
+                    <div class="categories" >
+                        <div class="category">
+                            <h3>ملحقات التليفزيون</h3>
+                            <ul>
+                                <a>حامل الشاشة</a>
+                                <a>رسيفر الدش</a>
+                                <a>سلك الدش</a>
+                                <a>تي في بوكس</a>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <h3>التليفزيونات</h3>
+                            <ul>
+                                <a>تلفزيون ذكي</a>
+                                <a>تلفزيون عادي</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+                                            <!--أجهزة منزلية-->
+            <a href="#">أجهزة منزلية</a>
+            <div class="dropdown-content">
+                <div class="container">
+                    <div class="image-section">
+                        <img src="images/electrics.jpg" alt="منتجات إلكترونية">
+                    </div>
+                    <div class="categories" >
+                        <div class="category">
+                            <h3>أجهزة المنزل الكبيرة</h3>
+                            <ul>
+                                <a>غسالات الملابس و المجففات</a>
+                                <a>غسالات الأطباق</a>
+                                <a>بوتاجازات</a>
+                                <a>مبرد مياه</a>
+                                <a>أجهزة المطبخ المدمجة</a>
+                                <a>مكيفات الهواء</a>
+                                <a>الثلاجات و الفريزر</a>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <h3>أجهزة المنزل الصغيرة</h3>
+                            <ul>
+                                <a>سخانات مياه</a>
+                                <a>مراوح</a>
+                                <a>مكواة</a>
+                                <a>دفايات</a>
+                                <a>شفاط حائط</a>
+                                <a>مكانس كهربائية</a>
+                                <a>فلاتر المياة</a>
+                                <a>صاعق ناموس</a>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <h3>أجهزة المطبخ</h3>
+                            <ul>
+                                <a>ميكرويف</a>
+                                <a>فرن كهربائي</a>
+                                <a>شواية كهربائية</a>
+                                <a>بوتاجاز مسطح</a>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <h3>أجهزة تحضير الافطار</h3>
+                            <ul>
+                                <a>صانع السندوتشات</a>
+                                <a>ماكينات القهوة</a>
+                                <a>غلاية مياه</a>
+                                <a>قلايات</a>
+                                <a>عصارة برتقال</a>
+                            </ul>
+                        </div> <div class="category">
+                            <h3>اجهزة الفرم و التقطيع</h3>
+                            <ul>
+                                <a>محضر طعام</a>
+                                <a>كبة كهربائية</a>
+                                <a>مفرمة لحمة</a>
+                            </ul>
+                        </div> <div class="category">
+                            <h3>اجهزة الخلط</h3>
+                            <ul>
+                                <a>خلاط كهربائي</a>
+                                <a>عجان</a>
+                                <a>هاند بلندر</a>
+                                <a>مضرب بيض</a>
+                            </ul>
+                        </div>
+                        <div class="category">
+                            <h3>اجهزة متخصصة</h3>
+                            <ul>
+                                <a>ماكينة صنع غزل البنات</a>
+                                <a>ماكينة صنع الزبادي</a>
+                                <a>ماكينة الفشار الكهربائية</a>
+                                <a>ماكينة الخياطة</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" style="color: rgb(255, 255, 255); ">عروض حصريّة</a>
+    </div>
+                        <!-- banner grid-->
+
+    <div class="slider">
+    <div class="slides">
+        <div class="bannerGrid" id="bannerGrid"></div>
+    </div>
+    <div class="navigation">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+    </div>
+
+                    <!-- product grid-->
+            <div class="grid-container">
+
+                <button class="slide-btn" id="prevBtn">&#10094;</button>
+                
+                <div class="slide-wrapper" id="slideWrapper">
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/electrics.jpg" alt="Product 1">
+                        </div>
+                        <div class="label">اجهزة المطبخ</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/electrics.jpg" alt="Product 2">
+                        </div>
+                        <div class="label">اجهزة الخلط</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/electrics.jpg" alt="Product 3">
+                        </div>
+                        <div class="label">اجهزة الفرم والتقطيع</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/tvs.jpg" alt="Product 4">
+                        </div>
+                        <div class="label">ملحقات التليفزيون</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/tvs.jpg" alt="Product 5">
+                        </div>
+                        <div class="label">التليفزيونات</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/appliance.jpg" alt="Product 6">
+                        </div>
+                        <div class="label">ادوات الشرب</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/appliance.jpg" alt="Product 7">
+                        </div>
+                        <div class="label">اواني الطهي</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/appliance.jpg" alt="Product 8">
+                        </div>
+                        <div class="label">اكسسوارات المطبخ</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/matress.jpg" alt="Product 9">
+                        </div>
+                        <div class="label">دفايات</div>
+                    </a>
+                    <a href="#" class="circle-item">
+                        <div class="circle">
+                            <img src="images/matress.jpg" alt="Product 10">
+                        </div>
+                        <div class="label">اطقم سراير</div>
+                    </a>
+                    
+                    <!-- Add more items as needed -->
+                </div>
+                <button class="slide-btn" id="nextBtn">&#10095;</button>
+            </div>
+
+            <!-- season photo grid-->
+           
+<div class="season-grid-container">
+    <div class="grid-item">
+        <img src="images/winter2.webp" alt="Image 2">
+    </div>
+    <div class="season-grid-item">
+        <img src="images/winter1.webp" alt="Image 1">
+    </div>
+    <div class="grid-item">
+        <img src="images/winter3.webp" alt="Image 3">
+    </div>
+</div>
+
+                            <!-- sales section-->
+            <h2 class ="sales">عروض و خصومات</h2>
+<div class="sales-grid-container">
+    <button class="sales-slide-btn" id="PrevBtn">&#10094;</button>
+    
+    <div class="sales-slide-wrapper" id="salesSlideWrapper">
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/electrics.jpg" alt="Product 1">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/electrics.jpg" alt="Product 2">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/electrics.jpg" alt="Product 3">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/tvs.jpg" alt="Product 4">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/tvs.jpg" alt="Product 5">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/appliance.jpg" alt="Product 6">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/appliance.jpg" alt="Product 7">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/appliance.jpg" alt="Product 8">
+            </div>
+         
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/matress.jpg" alt="Product 9">
+            </div>
+           
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/matress.jpg" alt="Product 10">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/matress.jpg" alt="Product 10">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/matress.jpg" alt="Product 10">
+            </div>
+            
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/tvs.jpg" alt="Product 5">
+            </div>
+            
+        </a>
+        
+        </a>
+        <a href="#" class="sales-box-item">
+            <div class="sales-box">
+                <img src="images/tvs.jpg" alt="Product 5">
+            </div>
+            
+        </a>
+        <!-- Add more items as needed -->
+    </div>
+    <button class="sales-slide-btn" id="NextBtn">&#10095;</button>
+
+    
+</div>
+                 <!-- for-you section-->
+                 <h2 class ="for-you">اخترنا لك</h2>
+<div class="foryou-grid-container">
+    <button class="foryou-slide-btn" id="PreVBtn">&#10094;</button>
+    
+    <div class="foryou-slide-wrapper" id="foryouSlideWrapper">
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/electrics.jpg" alt="Product 1">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/electrics.jpg" alt="Product 2">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">   
+                <img src="images/electrics.jpg" alt="Product 3">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/tvs.jpg" alt="Product 4">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/tvs.jpg" alt="Product 5">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/appliance.jpg" alt="Product 6">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/appliance.jpg" alt="Product 7">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/appliance.jpg" alt="Product 8">
+            </div>
+         
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/matress.jpg" alt="Product 9">
+            </div>
+           
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/matress.jpg" alt="Product 10">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/matress.jpg" alt="Product 10">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/matress.jpg" alt="Product 10">
+            </div>
+            
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/tvs.jpg" alt="Product 5">
+            </div>
+            
+        </a>
+        
+        </a>
+        <a href="#" class="foryou-box-item">
+            <div class="foryou-box">
+                <img src="images/tvs.jpg" alt="Product 5">
+            </div>
+            
+        </a>
+        <!-- Add more items as needed -->
+    </div>
+    <button class="foryou-slide-btn" id="NexTBtn">&#10095;</button>
+
+    
+</div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>مول الفتوح</h3>
+            <p>Learn more about our company and values.</p>
+        </div>
+        <div class="footer-section">
+            <h3>تواصل معنا</h3>
+            <p>ايميل الكتروني: info@fotoh-mall.com</p>
+            <p>خدمة العملاء: 01080912411</p>
+        </div>
+        <div class="footer-section">
+            <h3>تابعنا</h3>
+            <a href="#"><img src="images/whatsapp.png" alt="WhatsApp" class="social-icon"></a>
+            <a href="#"><img src="images/instagram.png" alt="Instagram" class="social-icon"></a>
+            <a href="#"><img src="images/facebook.png" alt="Facebook" class="social-icon"></a>
+            <a href="#"><img src="images/x.png" alt="Twitter" class="social-icon"></a>
+        </div>
+    </div>
+</footer>
+           
+
+</body>
+            <script src="script.js"></script>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Store - Home Appliances</h2>
+    <!--
+    <div id="filters">
+        <label for="priceRange">Price Range:</label>
+        <input type="range" id="priceRange" min="0" max="1000" value="500">
+        <span id="priceValue">500</span>
+        
+        <label for="sortBy">Sort By:</label>
+        <select id="sortBy">
+            <option value="priceLowToHigh">Price: Low to High</option>
+            <option value="priceHighToLow">Price: High to Low</option>
+            <option value="rating">Rating</option>
+        </select>
+    </div>
+-->
+    <div id="categoryButtons">
+        <button onclick="renderStoreProducts('all')">All</button>
+        <button onclick="renderStoreProducts('mattresses')">Mattresses</button>
+        <button onclick="renderStoreProducts('appliances')">Appliances</button>
+        <button onclick="renderStoreProducts('electrics')">Electrics</button>
+    </div>
+    
+    <div id="storeProducts" class="product-container"></div>
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const storeProducts = document.getElementById("storeProducts");
+            let products = JSON.parse(localStorage.getItem('products')) || [];
+
+            function renderStoreProducts(filter = "all") {
+                storeProducts.innerHTML = "";
+                const filteredProducts = filter === "all" ? products : products.filter(p => p.category === filter);
+
+                if (filteredProducts.length === 0) {
+                    storeProducts.innerHTML = "<p>🚫 No products available.</p>";
+                    return;
+                }
+
+                let row = document.createElement("div");
+                row.classList.add("product-row");
+
+                filteredProducts.forEach((product) => {
+                    const productCard = document.createElement("div");
+                    productCard.classList.add("product-card");
+                    productCard.innerHTML = `
+                        <img src="${product.image || 'placeholder.png'}" alt="${product.name}" class="product-image">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="price">💰 Price: ${product.price} جنيه</p>
+                        <p>🛒 Category: ${product.category}</p>
+                        <a href="product.html?id=${product._id}">View Product</a>
+                        <button onclick="addToWishlist('${product._id}')">❤️ Add to Wishlist</button>
+                         <button onclick="addToCart('${product._id}')">Buy Now</button>
+                    `;
+                    row.appendChild(productCard);
+
+                    if (row.children.length === 4) {
+                        storeProducts.appendChild(row);
+                        row = document.createElement("div");
+                        row.classList.add("product-row");
+                    }
+                });
+
+                if (row.children.length > 0) {
+                    storeProducts.appendChild(row);
+                }
+            }
+
+            function addToWishlist(productId) {
+                const product = products.find(p => p._id === productId);
+                if (product) {
+                    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                    wishlist.push(product);
+                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                    alert("Product added to wishlist!");
+                }
+            }
+
+            renderStoreProducts();
+        });
+
+        
+function addToCart(productId) {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const product = products.find(p => p._id === productId);
+
+    if (product) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert("Product added to cart!");
+    }
+}
+    </script>
+    
+    <style>
+           body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+        .product-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        .product-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background: #fff;
+            text-align: center;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .price {
+            color: red;
+            font-weight: bold;
+        }
+        #categoryButtons {
+            margin-bottom: 20px;
+        }
+        #categoryButtons button {
+            margin: 0 5px;
+        }
+    </style>
+</body>
+</html>
+
+
